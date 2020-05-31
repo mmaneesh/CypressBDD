@@ -1,0 +1,15 @@
+{
+    "ignoreTestFiles": "*.js",
+    "reporter": "mochawesome",
+    "reporterOptions": {
+          "reportDir": "cypress/reports/mochawesome-report",
+          "quiet": true,
+          "overwrite": false,
+          "html": true,
+          "json": false,
+          "timestamp" : "mmddyyyy_HHMMss"
+    },
+    "screenshotOnRunFailure":false,
+    "testFiles": "**/!(*.undefined).feature",
+    "video": false
+  }

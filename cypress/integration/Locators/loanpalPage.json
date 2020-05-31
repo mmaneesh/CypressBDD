@@ -1,0 +1,12 @@
+{
+    "aboutUsMenuItem" : "//li/a[contains(text(),'About Us')]",
+    "aliceCathcartImage" : ":nth-child(3) > .container > .a > .profile-pic > .no-border > .photo",
+    "aliceCathcartDesc" : "':nth-child(3) > .container > .b > .grid-item-text",
+    "aliceCathcartReadMore" : ":nth-child(3) > .container > .b > .grid-item-text > .no-border",
+    "aliceCathcartModal" : ".fancybox-slide--current > .fancybox-content > .fancybox-image",
+    "berndonMerkleyModal" : ".fancybox-slide--current > .fancybox-content > .fancybox-image",
+    "closeIcon" : ".fancybox-button--close",
+    "loanpalLogo" : ".logo",
+    "menuOption" : ".ion-navicon-round",
+    "nextButtonOnModal" : ".fancybox-button--arrow_right > div > svg"       
+}
