@@ -20,7 +20,7 @@ The external site and selectors date from 2020, so the scenario may no longer pa
 - Node.js 24.18.0 LTS and npm
 - A browser supported by Cypress 4.6.0
 
-The repository pins Node.js in both `.nvmrc` and `.node-version`. With `nvm`, activate it before installing dependencies:
+The repository pins the development version in `.nvmrc`, while `package.json` declares the supported Node.js 24 range. With `nvm`, activate the pinned version before installing dependencies:
 
 ```bash
 nvm install
