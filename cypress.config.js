@@ -8,7 +8,6 @@ const {
 } = require('@badeball/cypress-cucumber-preprocessor/esbuild');
 
 module.exports = defineConfig({
-  allowCypressEnv: false,
   reporter: 'mochawesome',
   reporterOptions: {
     reportDir: 'cypress/reports/mocha',
