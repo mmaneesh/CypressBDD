@@ -1,0 +1,24 @@
+{
+  "users": {
+    "standard": "standard_user",
+    "locked": "locked_out_user",
+    "password": "secret_sauce"
+  },
+  "products": {
+    "backpack": {
+      "name": "Sauce Labs Backpack",
+      "id": "sauce-labs-backpack",
+      "price": "$29.99"
+    },
+    "bikeLight": {
+      "name": "Sauce Labs Bike Light",
+      "id": "sauce-labs-bike-light",
+      "price": "$9.99"
+    }
+  },
+  "checkout": {
+    "firstName": "Test",
+    "lastName": "Shopper",
+    "postalCode": "60601"
+  }
+}

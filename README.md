@@ -1,104 +1,75 @@
-# Cypress BDD
+# Cypress BDD SauceDemo
 
-A behavior-driven end-to-end testing project built with Cypress and Gherkin. The repository demonstrates how a readable feature file maps business scenarios to reusable Cypress step definitions.
+[![CI](https://github.com/mmaneesh/CypressBDD/actions/workflows/ci.yml/badge.svg)](https://github.com/mmaneesh/CypressBDD/actions/workflows/ci.yml)
 
-> **Modernization in progress:** This project was originally created in 2020 with a legacy Cypress release. It is being updated incrementally so each change remains easy to understand and review. The current milestone uses Cypress 15.21.0; the next milestone replaces the temporary Loanpal scenario with a maintainable SauceDemo BDD suite.
+A maintainable end-to-end test portfolio using Cypress 15, Gherkin, page objects, parameterized scenarios, and the hosted [SauceDemo](https://www.saucedemo.com/) e-commerce application. No application build or local web server is required.
 
-## Current example
+## Test coverage
 
-The existing example describes a visitor navigating the Loanpal website and viewing leadership profiles. Its main pieces are:
+The suite executes 20 independent scenarios across four business areas:
 
-- `cypress.config.js` — Cypress configuration and Node event registration
-- `cypress/e2e/automationTest/automationTests.feature` — the Gherkin scenario
-- `cypress/e2e/automationTest/automationTests/automationTests.js` — Cypress step definitions
-- `cypress/e2e/Locators/loanpalPage.json` — page selectors
-- `cypress/e2e/common/hooks.js` — scenario lifecycle hooks
-- `cypress/support/e2e.js` — browser-side support setup
+- Authentication: successful login, locked user, and parameterized invalid credentials
+- Inventory: catalog visibility, product details, and four parameterized sort modes
+- Cart: single and data-table-driven multi-product additions, removal, and product details
+- Checkout: parameterized required-field validation, cancellation, and successful completion
 
-The external site now redirects to GoodLeap and fails in that application's live-preview initialization. This scenario remains only as a temporary smoke test proving Cypress can discover and compile the BDD feature. The next milestone replaces it with SauceDemo page objects and independent positive, negative, and parameterized scenarios.
+Tests use stable `data-test` selectors and avoid forced interactions or assertions against third-party asset URLs.
+
+## Project structure
+
+```text
+cypress/
+├── e2e/features/              # Gherkin feature files
+├── fixtures/sauceDemo.json    # Test users, products, and checkout data
+├── pages/                     # Page Object Model classes
+└── support/
+    ├── e2e.js                 # Browser support and reporter registration
+    └── step_definitions/      # Reusable Cucumber steps
+.github/workflows/ci.yml       # Quality and Cypress CI jobs
+```
+
+Page objects own selectors and browser interactions. Step definitions express business behavior and assertions, while fixtures keep test data separate from both.
 
 ## Prerequisites
 
-- Node.js 24.18.0 LTS and npm
-- A browser supported by Cypress 15.21.0
-
-The repository pins the development version in `.nvmrc`, while `package.json` declares the supported Node.js 24 range. With `nvm`, activate the pinned version before installing dependencies:
+- Node.js 24.18.0 or another version in the declared Node 24 range
+- npm
 
 ```bash
 nvm install
 nvm use
-node --version
-```
-
-The expected output is `v24.18.0`. Cypress is pinned to 15.21.0.
-
-## Install
-
-```bash
 npm ci
 ```
 
-## Run
-
-Open the Cypress Test Runner:
+## Commands
 
 ```bash
-npm run cy:open
+npm run cy:open       # Open the interactive Cypress runner
+npm test              # Run all BDD scenarios headlessly
+npm run lint          # Check JavaScript
+npm run format:check  # Check repository formatting
+npm run validate      # Run every local validation
 ```
 
-Run the BDD suite headlessly:
+Each Cypress run creates an inline-asset Mochawesome HTML report under `cypress/reports`. Failed tests retain screenshots, and CI uploads reports, screenshots, and videos when present.
 
-```bash
-npm test
-```
+## Developer automation
 
-Generate a combined Mochawesome report after a test run, including after a failed test run:
-
-```bash
-npm run report
-```
-
-Generated dependencies, screenshots, videos, downloads, and test reports are intentionally excluded from version control.
-
-## Code quality
-
-Check JavaScript for common errors:
-
-```bash
-npm run lint
-```
-
-Check formatting without changing files:
-
-```bash
-npm run format:check
-```
-
-Apply automatic lint and formatting fixes with `npm run lint:fix` and `npm run format`.
+`npm ci` runs the Husky prepare script. Before each commit, lint-staged checks formatting for staged source files and runs ESLint on staged JavaScript files. Dependabot checks npm packages weekly and GitHub Actions monthly.
 
 ## Technology
 
-- Cypress
-- Gherkin and Cucumber step definitions
-- Mochawesome reporting
-- JavaScript
-
-## Modernization roadmap
-
-- [x] Remove committed dependencies, generated reports, and embedded credentials from the maintained source
-- [x] Document the project and its current limitations
-- [x] Simplify local test and reporting commands
-- [x] Establish Node.js 24 LTS as the development baseline
-- [x] Add linting and formatting tools
-- [x] Upgrade Cypress in controlled milestones through 15.21.0
-- [x] Migrate to the maintained `@badeball/cypress-cucumber-preprocessor`
-- [ ] Replace the obsolete external-site scenario with a SauceDemo POM suite
-- [ ] Add GitHub Actions continuous integration
-- [ ] Add Git hooks and dependency automation
+- Cypress 15.21.0
+- `@badeball/cypress-cucumber-preprocessor`
+- Gherkin Scenario Outlines and Data Tables
+- Page Object Model
+- `cypress-mochawesome-reporter`
+- ESLint, Prettier, Husky, and lint-staged
+- GitHub Actions and Dependabot
 
 ## Security
 
-Never commit passwords, tokens, or personal credentials. Use environment variables or a local ignored `.env` file for sensitive test data.
+SauceDemo publishes its demonstration credentials on its login page. Never commit private passwords, tokens, or personal credentials; use ignored environment files or CI secrets for sensitive systems.
 
 ## License
 
