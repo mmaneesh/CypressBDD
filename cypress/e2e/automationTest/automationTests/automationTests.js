@@ -1,4 +1,5 @@
-import { Given, Then, When, And } from 'cypress-cucumber-preprocessor/steps';
+import { Given, Then, When } from '@badeball/cypress-cucumber-preprocessor';
+import '../../common/hooks';
 import 'cypress-wait-until';
 import loanpalLocators from '../../Locators/loanpalPage.json';
 
@@ -7,17 +8,17 @@ Given('I Launch The Loanpal Website', function () {
   cy.get(loanpalLocators.loanpalLogo).should('be.visible');
 });
 
-And('I Click On Menu Option', function () {
+Given('I Click On Menu Option', function () {
   cy.get(loanpalLocators.menuOption).should('be.visible');
   cy.get(loanpalLocators.menuOption).click();
 });
 
-And('I Select About Us Menu Item', function () {
+Given('I Select About Us Menu Item', function () {
   cy.xpath(loanpalLocators.aboutUsMenuItem).click({ force: true });
   //cy.get('.leadership-intro > .row > .brandon-black').should('be.visible');
 });
 
-And('I Navigate To Alice Cathcart Profile', function () {
+Given('I Navigate To Alice Cathcart Profile', function () {
   cy.get(loanpalLocators.aliceCathcartImage).scrollIntoView();
   cy.get(loanpalLocators.aliceCathcartImage).should('be.visible');
 });

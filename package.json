@@ -34,9 +34,6 @@
     "prettier": "3.9.6",
     "rimraf": "^2.7.1"
   },
-  "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
-  },
   "author": "Maneesh",
   "license": "ISC",
   "engines": {
