@@ -17,10 +17,18 @@ The external site and selectors date from 2020, so the scenario may no longer pa
 
 ## Prerequisites
 
-- Node.js and npm
+- Node.js 24.18.0 LTS and npm
 - A browser supported by Cypress 4.6.0
 
-The legacy Cypress version may not support current Node.js releases. A supported Node version will be documented when the dependency upgrade is completed.
+The repository pins Node.js in both `.nvmrc` and `.node-version`. With `nvm`, activate it before installing dependencies:
+
+```bash
+nvm install
+nvm use
+node --version
+```
+
+The expected output is `v24.18.0`. Cypress is still pinned to the legacy 4.6.0 release and will be upgraded separately in controlled steps.
 
 ## Install
 
@@ -62,6 +70,7 @@ Generated dependencies, screenshots, videos, downloads, and test reports are int
 - [x] Remove committed dependencies, generated reports, and embedded credentials from the maintained source
 - [x] Document the project and its current limitations
 - [x] Simplify local test and reporting commands
+- [x] Establish Node.js 24 LTS as the development baseline
 - [ ] Upgrade Cypress in controlled major-version steps
 - [ ] Migrate to the maintained `@badeball/cypress-cucumber-preprocessor`
 - [ ] Replace the obsolete external-site scenario with a reliable example
