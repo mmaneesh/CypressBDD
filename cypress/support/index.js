@@ -14,7 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
 require('cypress-xpath');
 //require('@neuralegion/cypress-har-generator/commands');
 
