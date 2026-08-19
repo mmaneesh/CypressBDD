@@ -2,7 +2,7 @@
 
 A behavior-driven end-to-end testing project built with Cypress and Gherkin. The repository demonstrates how a readable feature file maps business scenarios to reusable Cypress step definitions.
 
-> **Modernization in progress:** This project was originally created in 2020 with a legacy Cypress release. It is being updated incrementally so each change remains easy to understand and review. The current milestone uses Cypress 12.17.4; the next upgrade targets Cypress 15.21.0.
+> **Modernization in progress:** This project was originally created in 2020 with a legacy Cypress release. It is being updated incrementally so each change remains easy to understand and review. The current milestone uses Cypress 15.21.0; the next milestone replaces the temporary Loanpal scenario with a maintainable SauceDemo BDD suite.
 
 ## Current example
 
@@ -15,12 +15,12 @@ The existing example describes a visitor navigating the Loanpal website and view
 - `cypress/e2e/common/hooks.js` — scenario lifecycle hooks
 - `cypress/support/e2e.js` — browser-side support setup
 
-The external site and selectors date from 2020, so the scenario may no longer pass against the current website. Replacing it with a stable modern example is part of the roadmap rather than this initial cleanup.
+The external site now redirects to GoodLeap and fails in that application's live-preview initialization. This scenario remains only as a temporary smoke test proving Cypress can discover and compile the BDD feature. The next milestone replaces it with SauceDemo page objects and independent positive, negative, and parameterized scenarios.
 
 ## Prerequisites
 
 - Node.js 24.18.0 LTS and npm
-- A browser supported by Cypress 12.17.4
+- A browser supported by Cypress 15.21.0
 
 The repository pins the development version in `.nvmrc`, while `package.json` declares the supported Node.js 24 range. With `nvm`, activate the pinned version before installing dependencies:
 
@@ -30,7 +30,7 @@ nvm use
 node --version
 ```
 
-The expected output is `v24.18.0`. Cypress is pinned to 12.17.4 for this migration milestone and will be upgraded to 15.21.0 in a separate pull request.
+The expected output is `v24.18.0`. Cypress is pinned to 15.21.0.
 
 ## Install
 
@@ -90,9 +90,9 @@ Apply automatic lint and formatting fixes with `npm run lint:fix` and `npm run f
 - [x] Simplify local test and reporting commands
 - [x] Establish Node.js 24 LTS as the development baseline
 - [x] Add linting and formatting tools
-- [ ] Upgrade Cypress in controlled milestones (currently 12.17.4; next 15.21.0)
+- [x] Upgrade Cypress in controlled milestones through 15.21.0
 - [x] Migrate to the maintained `@badeball/cypress-cucumber-preprocessor`
-- [ ] Replace the obsolete external-site scenario with a reliable example
+- [ ] Replace the obsolete external-site scenario with a SauceDemo POM suite
 - [ ] Add GitHub Actions continuous integration
 - [ ] Add Git hooks and dependency automation
 
