@@ -2,11 +2,11 @@
     "ignoreTestFiles": "*.js",
     "reporter": "mochawesome",
     "reporterOptions": {
-          "reportDir": "cypress/reports/mochawesome-report",
+          "reportDir": "cypress/reports/mocha",
           "quiet": true,
           "overwrite": false,
-          "html": true,
-          "json": false,
+          "html": false,
+          "json": true,
           "timestamp" : "mmddyyyy_HHMMss"
     },
     "screenshotOnRunFailure":false,

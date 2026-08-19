@@ -1,0 +1,15 @@
+node_modules/
+
+# Cypress-generated artifacts
+cypress/downloads/
+cypress/screenshots/
+cypress/videos/
+cypress/reports/
+
+# Local environment and editor files
+.env
+.env.*
+!.env.example
+.DS_Store
+.idea/
+.vscode/
