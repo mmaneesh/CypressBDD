@@ -20,6 +20,10 @@
     "*.{js,json,md,yml,yaml,feature}": "prettier --check",
     "*.js": "eslint"
   },
+  "overrides": {
+    "diff": "8.0.3",
+    "serialize-javascript": "7.1.0"
+  },
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "26.0.0",
     "@bahmutov/cypress-esbuild-preprocessor": "2.2.8",
