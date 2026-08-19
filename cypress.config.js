@@ -20,6 +20,7 @@ module.exports = defineConfig({
   screenshotOnRunFailure: false,
   video: false,
   e2e: {
+    baseUrl: 'https://www.saucedemo.com',
     specPattern: 'cypress/e2e/**/*.feature',
     supportFile: 'cypress/support/e2e.js',
     async setupNodeEvents(on, config) {

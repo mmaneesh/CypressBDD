@@ -23,8 +23,6 @@
     "@eslint/js": "10.0.1",
     "cypress": "15.21.0",
     "cypress-multi-reporters": "^1.4.0",
-    "cypress-wait-until": "3.0.2",
-    "cypress-xpath": "2.0.1",
     "esbuild": "0.28.2",
     "eslint": "10.8.1",
     "globals": "17.11.0",
