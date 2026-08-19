@@ -23,10 +23,12 @@
 ### Task 1: Replace the Cypress and Cucumber dependency stack
 
 **Files:**
+
 - Modify: `package.json`
 - Modify: `package-lock.json`
 
 **Interfaces:**
+
 - Consumes: npm registry metadata and the existing development dependency manifest
 - Produces: exact Cypress 12.17.4, `@badeball/cypress-cucumber-preprocessor` 18.0.6, and `@bahmutov/cypress-esbuild-preprocessor` 2.2.4 dependencies
 
@@ -73,12 +75,14 @@ git commit -m "chore: upgrade Cypress dependency stack"
 ### Task 2: Migrate Cypress configuration and Node events
 
 **Files:**
+
 - Create: `cypress.config.js`
 - Delete: `cypress.json`
 - Delete: `cypress/plugins/index.js`
 - Modify: `eslint.config.mjs`
 
 **Interfaces:**
+
 - Consumes: the preprocessor packages installed in Task 1
 - Produces: Cypress 12 `e2e` configuration with `.feature` discovery and esbuild preprocessing
 
@@ -173,6 +177,7 @@ git commit -m "chore: migrate Cypress configuration"
 ### Task 3: Move the E2E suite and migrate step imports
 
 **Files:**
+
 - Rename: `cypress/support/index.js` to `cypress/support/e2e.js`
 - Rename: `cypress/integration/automationTest/automationTests.feature` to `cypress/e2e/automationTest/automationTests.feature`
 - Rename: `cypress/integration/automationTest/automationTests/automationTests.js` to `cypress/e2e/automationTest/automationTests/automationTests.js`
@@ -181,6 +186,7 @@ git commit -m "chore: migrate Cypress configuration"
 - Modify: `cypress/e2e/automationTest/automationTests/automationTests.js`
 
 **Interfaces:**
+
 - Consumes: `specPattern` and support path from Task 2
 - Produces: one discoverable `.feature` file with colocated Badeball step definitions and explicit shared hooks
 
@@ -220,11 +226,11 @@ import { Given, Then, When, And } from 'cypress-cucumber-preprocessor/steps';
 with:
 
 ```js
-import { And, Given, Then, When } from '@badeball/cypress-cucumber-preprocessor';
+import { Given, Then, When } from '@badeball/cypress-cucumber-preprocessor';
 import '../../common/hooks';
 ```
 
-Keep the locator import as `../../Locators/loanpalPage.json` because the relative layout remains equivalent.
+Replace the three legacy `And(...)` registrations for menu selection and profile navigation with `Given(...)`. Cucumber matches step text independently of whether the feature line uses `Given` or `And`, so the Gherkin scenario remains unchanged. Keep the locator import as `../../Locators/loanpalPage.json` because the relative layout remains equivalent.
 
 - [ ] **Step 4: Verify the new layout statically**
 
@@ -250,9 +256,11 @@ git commit -m "test: migrate BDD suite to Cypress E2E layout"
 ### Task 4: Update project documentation
 
 **Files:**
+
 - Modify: `README.md`
 
 **Interfaces:**
+
 - Consumes: the final paths, versions, and commands from Tasks 1–3
 - Produces: accurate developer setup and roadmap documentation
 
@@ -298,9 +306,11 @@ git commit -m "docs: document Cypress 12 milestone"
 ### Task 5: Run end-to-end verification and prepare the PR
 
 **Files:**
+
 - Modify only if verification exposes a migration defect in files already listed above
 
 **Interfaces:**
+
 - Consumes: the completed Cypress 12 migration
 - Produces: fresh validation evidence and a focused branch ready for review
 
