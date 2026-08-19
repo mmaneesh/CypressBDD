@@ -58,6 +58,22 @@ npm run report
 
 Generated dependencies, screenshots, videos, downloads, and test reports are intentionally excluded from version control.
 
+## Code quality
+
+Check JavaScript for common errors:
+
+```bash
+npm run lint
+```
+
+Check formatting without changing files:
+
+```bash
+npm run format:check
+```
+
+Apply automatic lint and formatting fixes with `npm run lint:fix` and `npm run format`.
+
 ## Technology
 
 - Cypress
@@ -71,11 +87,12 @@ Generated dependencies, screenshots, videos, downloads, and test reports are int
 - [x] Document the project and its current limitations
 - [x] Simplify local test and reporting commands
 - [x] Establish Node.js 24 LTS as the development baseline
+- [x] Add linting and formatting tools
 - [ ] Upgrade Cypress in controlled major-version steps
 - [ ] Migrate to the maintained `@badeball/cypress-cucumber-preprocessor`
 - [ ] Replace the obsolete external-site scenario with a reliable example
 - [ ] Add GitHub Actions continuous integration
-- [ ] Add linting, formatting, and dependency automation
+- [ ] Add Git hooks and dependency automation
 
 ## Security
 
