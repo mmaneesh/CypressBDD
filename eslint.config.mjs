@@ -13,8 +13,14 @@ export default [
   },
   js.configs.recommended,
   {
+    files: ['cypress.config.js'],
+    languageOptions: {
+      sourceType: 'commonjs',
+      globals: globals.node,
+    },
+  },
+  {
     files: ['cypress/**/*.js'],
-    ignores: ['cypress/plugins/**/*.js'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -25,16 +31,6 @@ export default [
         cy: 'readonly',
         require: 'readonly',
       },
-    },
-    rules: {
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-    },
-  },
-  {
-    files: ['cypress/plugins/**/*.js'],
-    languageOptions: {
-      sourceType: 'commonjs',
-      globals: globals.node,
     },
     rules: {
       'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
