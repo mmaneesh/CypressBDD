@@ -30,10 +30,22 @@ npm ci
 
 ## Run
 
+Open the Cypress Test Runner:
+
+```bash
+npm run cy:open
+```
+
 Run the BDD suite headlessly:
 
 ```bash
 npm test
+```
+
+Generate a combined Mochawesome report after a test run, including after a failed test run:
+
+```bash
+npm run report
 ```
 
 Generated dependencies, screenshots, videos, downloads, and test reports are intentionally excluded from version control.
@@ -49,7 +61,7 @@ Generated dependencies, screenshots, videos, downloads, and test reports are int
 
 - [x] Remove committed dependencies, generated reports, and embedded credentials from the maintained source
 - [x] Document the project and its current limitations
-- [ ] Simplify local test and reporting commands
+- [x] Simplify local test and reporting commands
 - [ ] Upgrade Cypress in controlled major-version steps
 - [ ] Migrate to the maintained `@badeball/cypress-cucumber-preprocessor`
 - [ ] Replace the obsolete external-site scenario with a reliable example
