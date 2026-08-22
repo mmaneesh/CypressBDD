@@ -4,6 +4,17 @@ on:
   push:
     branches: [master]
   pull_request:
+  workflow_dispatch:
+    inputs:
+      target_environment:
+        description: Environment to test
+        required: true
+        default: prod
+        type: choice
+        options:
+          - prod
+          - stg
+          - preview
 
 permissions:
   contents: read
@@ -19,12 +30,17 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - run: npm run test:config
       - run: npm run lint
       - run: npm run format:check
 
   e2e:
     name: Cypress E2E
     runs-on: ubuntu-latest
+    environment: ${{ inputs.target_environment || 'prod' }}
+    env:
+      TARGET_ENVIRONMENT: ${{ inputs.target_environment || 'prod' }}
+      CYPRESS_BASE_URL: ${{ vars.BASE_URL || 'https://www.saucedemo.com' }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -32,7 +48,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
-      - run: npm test
+      - run: npm run "test:${TARGET_ENVIRONMENT}"
       - name: Upload Cypress artifacts
         if: always()
         uses: actions/upload-artifact@v7
