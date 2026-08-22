@@ -13,7 +13,7 @@ export default [
   },
   js.configs.recommended,
   {
-    files: ['cypress.config.js'],
+    files: ['cypress.config.js', 'config/**/*.js'],
     languageOptions: {
       sourceType: 'commonjs',
       globals: globals.node,
