@@ -46,12 +46,28 @@ npm ci
 ```bash
 npm run cy:open       # Open the interactive Cypress runner
 npm test              # Run all BDD scenarios headlessly
+npm run test:prod     # Run against the production environment
+npm run test:stg      # Run against the staging environment
+npm run test:preview  # Run against the preview environment
+npm run test:config   # Test environment configuration
 npm run lint          # Check JavaScript
 npm run format:check  # Check repository formatting
 npm run validate      # Run every local validation
 ```
 
 Each Cypress run creates an inline-asset Mochawesome HTML report under `cypress/reports`. Failed tests retain screenshots, and CI uploads reports, screenshots, and videos when present.
+
+## Test environments
+
+The suite recognizes `prod`, `stg`, and `preview`. SauceDemo provides one public deployment, so all three currently use `https://www.saucedemo.com` while preserving separate commands and CI environments for future deployments.
+
+Cypress natively reads `CYPRESS_BASE_URL`, so the same variable overrides the URL for any selected environment:
+
+```bash
+CYPRESS_BASE_URL=https://environment-url.example npm run test:preview
+```
+
+The committed `.env.example` documents this variable. If you copy it to an ignored `.env` file, export or source the value in your shell before running Cypress; no environment file containing private values should be committed.
 
 ## Developer automation
 
